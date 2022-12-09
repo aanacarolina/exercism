@@ -12,3 +12,8 @@ pom.xml.asc
 .hg/
 .idea/
 .DS_Store
+ .calva/
+.clj-kondo/
+.lsp/
+.vscode/
+.calva/
