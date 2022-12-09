@@ -1,7 +1,70 @@
 (ns exercism.bank)
 
-;create account
+(def accts {:accounts {0 {:balance 10 :status "open"}
+                       1 {:balance 0 :status "open"}
+                       2 {:balance 100 :status "open"}
+                       3 {:balance 0 :status "closed"}}})
+
+()
 (defn create-account
   [state account-id]
-  )
+  (assoc-in state [:accounts account-id] {:balance 0 :status "open"}))
+
+(println accts)
+(create-account accts 0)
+(println accts)
+
+
+(defn make-deposit
+  [state account-id amount]
+  (assoc-in state [:accounts account-id] {:balance (+ (get-in state [:accounts account-id :balance]) amount)}))
+
+(defn make-deposit-up
+  [state account-id amount]
+  (if (= (get-in state [:accounts account-id :status]) "closed")
+    (throw (ex-info "Account closed" {:account-id account-id}))
+  (update-in state
+             [:accounts account-id :balance]
+             + amount)))
+
+(defn withdrawal
+  [state account-id amount]
+  (let [balance (get-in state [:accounts account-id :balance])]
+    (if (< 0 (- amount balance))
+      (throw (ex-info " Insuficient funds " {:account-id account-id :balance balance :amount amount}))
+      (update-in state
+                [:accounts account-id :balance]
+                - amount))))
+
+(defn close-account
+  [state account-id]
+  (update state
+          :accounts
+          dissoc account-id))
+
+(defn close-account-status
+  [state account-id status]
+  (update-in state
+             [:accounts account-id :status ]
+             assoc status "closed"))
+
+(defn close-account-balance
+  [state account-id]
+  (let [balance (get-in state [:accounts account-id :balance])]
+                 (if (> balance 0)
+                  (throw (ex-info " Balance is not zero " {:account-id account-id}))
+                  (assoc-in state
+                             [:accounts account-id :status ]
+                            "closed"))))
+
+
+(comment (make-deposit-up accts 3 350)
+         (make-deposit-up accts 1 10)
+         (make-deposit accts 0 10)
+         (close-account accts 1)
+         (withdrawal accts 0 5))
+
+
+; usar update-in ao inves de assoc-in
 ;state is a map of accounts
+
