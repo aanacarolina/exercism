@@ -18,8 +18,8 @@
          (bank/make-deposit-up {:accounts {0 {:balance 0 :status "open"}}} 0 10)))
   (is (= {:accounts {0 {:balance 35 :status "open"}}}
          (bank/make-deposit-up {:accounts {0 {:balance 10 :status "open"}}} 0 25)))
-  (is (thrown-with-msg? ExceptionInfo #"Account closed"
-                        (bank/make-deposit {:accounts {3 {:balance 0 :status "closed"}}} 3 25))))
+  (is (thrown-with-msg? ExceptionInfo #"Account closed" 
+                        (bank/make-deposit-up {:accounts {3 {:balance 0 :status "closed"}}} 3 25))))
 
 (deftest withdrawal-test
   (is (= {:accounts {0 {:balance 3 :status "open"}}}

@@ -16,10 +16,13 @@
   (assoc-in state [:accounts account-id] {:balance (+ (get-in state [:accounts account-id :balance]) amount)}))
 
 (defn make-deposit-up
-  [state account-id amount] 
-  (update-in state
-             [:accounts account-id :balance ]
-             + amount))
+  [state account-id amount]
+  (let [account-status (get-in state [:accounts account-id :status])]
+    (if (= account-status "closed")
+      (throw (ex-info "Account closed" {:account-id account-id}))
+      (update-in state
+                 [:accounts account-id :balance ]
+                 + amount))))
 
 (defn account-closed
   [state account-id]
