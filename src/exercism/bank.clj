@@ -16,7 +16,7 @@
   (assoc-in state [:accounts account-id] {:balance (+ (get-in state [:accounts account-id :balance]) amount)}))
 
 (defn make-deposit-up
-  [state account-id amount]
+  [state account-id amount] 
   (update-in state
              [:accounts account-id :balance ]
              + amount))
@@ -66,7 +66,3 @@
   (withdrawal accts 0 5)
 (withdrawal accts 3 5)
   (close-account-status accts 1 "closed"))
-
-
-
-
