@@ -15,3 +15,5 @@
 (deftest total-time-test
   (testing "return zero if total time is lower than minutes in oven"
     (is (= 35 (lasagna/remaining-time 5)))))
+;; => Syntax error compiling at (test/exercism/lasagna_test.clj:15:1).
+;;    Unable to resolve symbol: deftest in this context
