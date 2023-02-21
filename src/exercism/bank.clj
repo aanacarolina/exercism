@@ -9,7 +9,7 @@
 (defn create-account
   [state account-id]
   (assoc-in state [:accounts account-id] {:balance 0 :status "open"}))
-;TO DO ID criada
+;TODO ID criada
 
 (defn make-deposit
   [state account-id amount]
