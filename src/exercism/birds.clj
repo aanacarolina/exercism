@@ -31,17 +31,15 @@
   (= 7 (count birds)))
 
 (defn new-odd-week? [birds]
-  (is-a-7-day-week? birds)
-  (if (empty? birds)
+    (if (empty? birds)
     true
     (let [primeiro (first birds)
           segundo (second birds)]
       (cond
         (or
-         (prn primeiro segundo birds)
-         (and (= 1 primeiro) (or (= 0 segundo)(nil? segundo)))
-         (and (= 0 primeiro) (or (= 1 segundo)(nil? segundo))))
-        (recur (rest birds) );;same as new-odd-week but won't overflow
+         (and (= 1 primeiro) (or (= 0 (second birds)) (nil? (second birds)))) ;can't compare with the function 
+         (and (= 0 primeiro) (or (= 1 segundo) (nil? segundo))))
+        (recur (rest birds));;same as new-odd-week but won't overflow
         :else false))))
 
 
