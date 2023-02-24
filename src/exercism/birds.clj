@@ -1,4 +1,4 @@
-(ns exercism.birds 
+(ns exercism.birds
   (:require [exercism.birds :as birds]))
 
 (def last-week
@@ -25,41 +25,37 @@
 
 (defn odd-week? [birds]
   ;(or (= 1 (first birds)) (= 0 (first birds))))
-   (or (= [1 0 1 0 1 0 1] birds) (= [0 1 0 1 0 1 0] birds)))
-    
+  (or (= [1 0 1 0 1 0 1] birds) (= [0 1 0 1 0 1 0] birds)))
+
 (defn is-a-7-day-week? [birds]
   (= 7 (count birds)))
 
 (defn new-odd-week? [birds]
-    (if (empty? birds)
-    true
-    (let [primeiro (first birds)
-          segundo (second birds)]
-      (cond
-        (or
-         (and (= 1 primeiro) (or (= 0 (second birds)) (nil? (second birds)))) ;can't compare with the function 
-         (and (= 0 primeiro) (or (= 1 segundo) (nil? segundo))))
-        (recur (rest birds));;same as new-odd-week but won't overflow
-        :else false))))
+  (or (empty? birds)
+      (let [primeiro (first birds)
+            segundo (second birds)]
+        (if (or
+             (and (= 1 primeiro) (or (= 0 (second birds)) (nil? (second birds)))) ;can't compare with the function 
+             (and (= 0 primeiro) (or (= 1 segundo) (nil? segundo))))
+          (recur (rest birds));;same as new-odd-week but won't overflow
+          false))))
 
 
 ;first = 1 second = 0 / first = 0 second 1 - if second nil? end true
-  
 
-(comment 
-  (not (empty? (filter zero? [2 4 6 7]))) 
+
+(comment
+  (not (empty? (filter zero? [2 4 6 7])))
   (boolean (seq (filter zero? [2 4 6 7])))
-  
+
   (count [2 5 0 7 4 2])
   (->> [2 5 0 7 4 2]
        (take 4)
        (reduce +))
 
   (busy-days [2 5 0 7 4 2])
-  
-  (new-odd-week? [0 1 0 1 0 0])
- (new-odd-week? [0 1 0 1 0 1 2])
- (is-a-7-day-week? [0 1 0 1 0])
- (is-a-7-day-week? [0 1 0 1 0 1 2])
 
-  )
+  (new-odd-week? [0 1 0 1 0 0])
+  (new-odd-week? [0 1 0 1 0 1 2])
+  (is-a-7-day-week? [0 1 0 1 0])
+  (is-a-7-day-week? [0 1 0 1 0 1 2]))
