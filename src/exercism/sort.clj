@@ -61,25 +61,25 @@
         (recur values
                (inc index)
                false))))) ;nao faz mudança, nao ta no fim da lista vai pro proximo e marca que nao fez troca
-   
-; BUG EH A PRIMEIRA PASSADA PQ SAI 3 X E NO FINAL OS 2 PRIMEIROS NAO TROCARAM?
 
 (defn sorta [original-values]
     (loop [values original-values
            index 0
            swapped-in-current-pass? false]
+      (println "index" index) 
       (println values)
-      (if (= index (dec (count values))) ;fim da lista (VERIFICAR)
-        (if (not swapped-in-current-pass?) ; significa q lista está ordenada
+      (println swapped-in-current-pass?)
+      (if (= index (dec (count values)))
+        (if (not swapped-in-current-pass?) 
           values
           (recur values 0 false))
-        (if (> (nth values index) (nth values (inc index))) ;precisa fazer troca 
-          (recur (swap-values values index (inc index)) ;fazendo a troca atual
-                 (inc index) ; indo para o proximo elemento
-                 true) ;houve troca
+        (if (> (nth values index) (nth values (inc index)))
+          (recur (swap-values values index (inc index))
+                 (inc index)
+                 true)
           (recur values
                  (inc index)
-                 false))))) ;nao faz
+                 swapped-in-current-pass?))))) ;nao tem que trocar 
   
   
 
