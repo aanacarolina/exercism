@@ -79,7 +79,7 @@
                  true)
           (recur values
                  (inc index)
-                 swapped-in-current-pass?))))) ;nao tem que trocar 
+                 swapped-in-current-pass?))))) ;nao tem que trocar toda vez (hence NAO FAZ MUDANCA x-)
   
   
 
