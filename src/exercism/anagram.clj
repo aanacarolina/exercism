@@ -15,11 +15,16 @@ hello
 :l 2
 :o 1
 
+    
 ohell
 
 :o 1
 :h 1
 :e)
+
+;* refazer usando frequencies
+; char - ASCI nao precisa transformar - java é UTF-16 2 bytes  / string - sequencia de chars, precisa transformar
+
 
 (defn string-split->map [word]
   (reduce (fn [acc letra]
@@ -40,3 +45,6 @@ ohell
 
 
 REFAZER USANDO sort
+
+(defn anagram-by-sort [word words-list]
+  (let main-word-sorted (sort word))())

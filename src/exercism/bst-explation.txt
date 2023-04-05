@@ -43,3 +43,4 @@ INPUT value 3 , node {:value 4}
 OUTPUT {:value 4 :left {:value 3}}
 
  
+NODE is a map
