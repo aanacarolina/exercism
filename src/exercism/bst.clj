@@ -18,8 +18,23 @@
   {:value val})
 
 (defn insert [val node] ;; <- arglist goes here
-  ;fazer passar o teste, ou seja insert left only
-  )
+  ;when no outro caso returns NIL - be aware
+  (cond
+    (< val (:value node))
+    (if-not (:left node)
+      (assoc node :left (singleton val))
+      (assoc node :left (insert val (:left node))))
+
+    (> val (:value node))
+    (if-not (:right node)
+      (assoc node :right (singleton val))
+      (assoc node :right (insert val (:right node))))
+
+    (= val (:value node))
+    node))
+
+;;check dups = refactor apos todos os testes passarem
+
 
 (defn to-list [val] ;; <- arglist goes here
   (when val
