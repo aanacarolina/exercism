@@ -1,0 +1,23 @@
+bits elevado a 2 = 01 
+4 BYTES = 32 BITS (2^4)
+unsigned 
+-132656 
+
+4 = 0100
+short 10 bits podemos contar ate 512 (2^9)
+(-511 a 511)
+
+unsigned 10 bits podemos contar 1024 (pq 2^10)
+(de 0 a 1023)
+
+bit = menor unidade (0 e 1)
+bytes = 8 bits (2^8 = 256)
+short/int16 = 16 bits (2^16 = 65536)
+int/int32 = 32 bits (2^32 = 4294967295) (com sinal MAX_INT)
+unsigned int = 64 bits
+
+toFloat(8
+ceil  - arredonda pra cima x numero de casas decimais (ex 2.9851348957 = 2.986)
+floor  - arredonda pra baixo x numero de casas decimais  - praticamente mantem (ex 2.9851348957 = 2.985)
+round - closetoeven - sempre vai arredondar para o prox par (ex 2.9851348957 = 2.984)  (ex 2.84799 = 2.848) )
+

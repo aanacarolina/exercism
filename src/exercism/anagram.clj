@@ -44,7 +44,10 @@ ohell
   filter diminuir ou igual) 
 
 
-REFAZER USANDO sort
+;REFAZER USANDO sort
 
 (defn anagram-by-sort [word words-list]
-  (let main-word-sorted (sort word))())
+  (let [main-word-sorted (sort word)
+        sorted-word-list (map (sort words-list))]
+    (= main-word-sorted ))
+  )
