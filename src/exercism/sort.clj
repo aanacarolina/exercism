@@ -98,10 +98,7 @@
 
 (defn sort-one-to-end [listinha])
 
-(comment (sort-two-by-two initial-values)
-         (sort-two-by-two names-list)
-         (sort-two-by-two papelzin)
-         (sort-two-by-two listinha)
+(comment 
          (sort initial-values)
          (sort names-list)
          (sort papelzin)

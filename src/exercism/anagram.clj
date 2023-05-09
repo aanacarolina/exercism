@@ -1,4 +1,4 @@
-(ns exercism.anagra
+(ns exercism.anagram
   (:require [clojure.string :as str]))
 
 #_(defn  1 - receber palavra e lista
@@ -38,7 +38,7 @@ ohell
          (into []))))
 
 
-#_(Conceitos para lembrar:
+#_(Conceitos para lembrar
   map 1 :1
   reduce TRANSFORMAR para 1 final (pode ate ser maior)
   filter diminuir ou igual) 
@@ -48,6 +48,6 @@ ohell
 
 (defn anagram-by-sort [word words-list]
   (let [main-word-sorted (sort word)
-        sorted-word-list (map (sort words-list))]
+        sorted-word-list (sort words-list)]
     (= main-word-sorted ))
   )

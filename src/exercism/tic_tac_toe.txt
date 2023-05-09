@@ -1,4 +1,4 @@
-(ns exercism.exercise2)
+(ns exercism.tic-tac-toe)
 
 escrever regras do jogo da velha de forma mais sucinta possivel
 

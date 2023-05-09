@@ -21,3 +21,13 @@ ceil  - arredonda pra cima x numero de casas decimais (ex 2.9851348957 = 2.986)
 floor  - arredonda pra baixo x numero de casas decimais  - praticamente mantem (ex 2.9851348957 = 2.985)
 round - closetoeven - sempre vai arredondar para o prox par (ex 2.9851348957 = 2.984)  (ex 2.84799 = 2.848) )
 
+0   0  0  0  0 0 0 0
+128 64 32 16 8 4 2 1
+
+2^0
+2^1
+2^2
+2^4
+2^8
+
+
