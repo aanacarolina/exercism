@@ -35,8 +35,6 @@ X - stop cond = length [NO]
            pos1 element-1 
            pos2 element-2))) ;usar update pq nao ta retornando o novo, alterar e usar de novo thread
 
-
-
 (defn reverter [vect]
   (loop [new-vect vect
          initial-pos 0
@@ -44,19 +42,29 @@ X - stop cond = length [NO]
     (if (< initial-pos (int (/ (count vect) 2)))
       (recur (swap-pos initial-pos last-pos new-vect)
              (inc initial-pos)
-             (dec last-pos))
+             (dec last-pos)) ;imperative
       new-vect)))
 
 
-(defn swap-pos [pos1 pos2 vect]
-  (let [element-1 (nth vect pos2)
-        element-2 (nth vect pos1)]
-    (assoc vect
-           pos1 element-1
-           pos2 element-2)))
+(defn simple-reverter [vect]
+  (loop [new-vect vect
+         index 0]
+    (if (< index (int (/ (count vect) 2)))
+      (recur (swap-pos index (- (count new-vect) 1 index) new-vect) ;declative
+             (inc index))
+      new-vect)))
 
 
-(defn reverter-atom [vect]
+;(- (- (count new-vect) 1) index)
+;(- (count new-vect) 1 index)
+
+;(swap-pos 0 9 new-vect)
+;(swap-pos 1 8 new-vect)
+;(swap-pos 2 7 new-vect)
+;(swap-pos 3 6 new-vect)
+;(swap-pos 4 5 new-vect)
+
+#_(defn reverter-atom [vect]
   (let [atom-vec (atom vect)]
     (loop [initial-pos 0
            last-pos (- (count vect) 1)]
@@ -67,18 +75,10 @@ X - stop cond = length [NO]
                                 (dec last-pos)))
         @atom-vec))))
 
-(defn reverter-atom2 [vect]
-  (let [atom-vec (atom vect)]
-    (loop [initial-pos 0
-           last-pos (- (count vect) 1)]
-      (when (< initial-pos (int (/ (count vect) 2)))
-        (swap-pos initial-pos last-pos @atom-vec) ;;como setar valor do atom para correto/esperado
-        (recur                (inc initial-pos)
-                              (dec last-pos))))
-    @atom-vec))
 
 
-(comment 
-  (reverter-atom vtr)
+(comment
+  
   (reverter vtorzin)
-  (reverter veh-thor))
+  (reverter veh-thor)
+  )
