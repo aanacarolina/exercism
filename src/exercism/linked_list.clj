@@ -19,14 +19,25 @@
    2.2 em seguida altera a referencia do node anterior pra o node criado)
 
 
-(defn linked-list [head body] ;;use vector
-  (conj body head))
+(defn linked-list [head tail] 
+  (conj tail head))
 
 (defn head [llist]
   (first llist))
 
-(defn body [llist]
+(defn tail [llist]
   (rest llist))
+
+(defn v-linked-list [head tail] ;;use vector
+  (vector tail head))
+
+(defn v-head [llist]
+  (subvec llist 0 1))
+
+(defn v-tail [llist]
+  (subvec llist 1))
+
+;get last node (subvec [1 2 3 4] (- (count [1 2 3 4]) 1))
 
 ;;implement rest first and conj na unha
 ;;body tudo q nao eh head
@@ -34,13 +45,14 @@
 ;;inserir ligar com o prox
 ;;trocar linha do head para o endereco do novo head
 
-(let [subject (linked-list 42 nil)]
-  (assert (= 42 (head subject))))
-(let [subject (linked-list 30 nil)]
-  (assert (= 30 (head subject))))
+(let [subject (v-linked-list 42 nil)]
+  (assert (= 42 (v-head subject))))
+(let [subject (v-linked-list 30 nil)]
+  (assert (= 30 (v-head subject))))
 
-(let [subject (linked-list 42 nil)
-      subject (linked-list 30 subject)
-      _ (assert (= 30 (head subject)))
-      subject (body subject)
-      _ (assert (= 42 (head subject)))])
+(let [subject (v-linked-list 42 nil)
+      subject (v-linked-list 30 subject) 
+      _ (assert (= 30 (v-head subject))) 
+      subject (v-tail subject)
+      _ (assert (= 42 (v-head subject)))])
+
