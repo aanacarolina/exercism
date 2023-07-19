@@ -57,8 +57,7 @@
       lista-1b (tail lista-2)
       _ (assert (= 42 (head lista-1b)))
       lista-3 (linked-list 20 lista-2)
-      _ (assert (= 20 (head lista-3)))
-      
+      _ (assert (= 20 (head lista-3))) 
       ])
 
 (def lista-1 {:head 42 :tail nil})
@@ -94,29 +93,42 @@
 
 ;;count map = reduce by keys
 
-
 (defn count-list [list current]
   (println "current: "current)
   (if (nil? (:tail list)) current
       (count-list (:tail list) (inc current))))
 
 (def lista-v1 [42 nil])
-(def lista-v2 [30 lista-v1])
-(def lista-v3 [20 lista-v2])
+(def lista-v2 [30 lista-v1]) 
+(def lista-v3 [20 lista-v2]) ;;[20 [30 [42 nil]]]
 
 ;implement using vector
  ;change nth element 
 
 
-(defn create-list [head] 
-  (conj '() head nil))
+(defn linked-list-v [head tail] 
+  (conj [] head tail))
 
-(defn adding-node [list data]
-  (conj list data))
+(defn head-v [list]
+  (get list 0))
 
-(defn adding-node [list data]
-  (conj list data))
+(defn tail-v [list]
+  (get list (- (count list) 1)))
+
+(defn tail-v2 [list]
+    (get list 1))
 
 
-(defn change-nth [list]
-  ())
+
+(let [subject (linked-list-v 42 nil)]
+  (assert (= 42 (head-v subject))))
+(let [subject (linked-list-v 30 nil)]
+  (assert (= 30 (head-v subject))))
+
+(let [lista-1 (linked-list-v 42 nil)
+      lista-2 (linked-list-v 30 lista-1)
+      _ (assert (= 30 (head-v lista-2)))
+      lista-1b (tail-v lista-2)
+      _ (assert (= 42 (head-v lista-1b)))
+      lista-3 (linked-list-v 20 lista-2)
+      _ (assert (= 20 (head-v lista-3)))])
