@@ -102,22 +102,31 @@
 (def lista-v2 [30 lista-v1]) 
 (def lista-v3 [20 lista-v2]) ;;[20 [30 [42 nil]]]
 
+
 ;implement using vector
  ;change nth element 
 
-
-(defn linked-list-v [head tail] 
-  (conj [] head tail))
+;;simplificar as 3 funções
+(defn linked-list-v [head tail]
+  (vector head tail))
 
 (defn head-v [list]
-  (get list 0))
+  (first list))
 
 (defn tail-v [list]
-  (get list (- (count list) 1)))
+  (last list))
 
-(defn tail-v2 [list]
-    (get list 1))
+;(get [20 [30 [42 nil]]] 2)
+;nil
+;clj꞉exercism.linked-list꞉> 
+;(get (get [20 [30 [42 nil]]] 1) 1)
 
+;;implement our own flatten
+(defn flatten-v [list]
+  (flatten list))
+
+;apply str [20 30 43]
+;em cada [20 [30 [42 nil]]]
 
 
 (let [subject (linked-list-v 42 nil)]
@@ -131,4 +140,8 @@
       lista-1b (tail-v lista-2)
       _ (assert (= 42 (head-v lista-1b)))
       lista-3 (linked-list-v 20 lista-2)
-      _ (assert (= 20 (head-v lista-3)))])
+      _ (assert (= 20 (head-v lista-3)))
+      _ (println (flatten-v lista-3))
+      _ (assert (= "203042" (apply str (flatten-v lista-3))))])
+
+
