@@ -18,4 +18,4 @@
                 (conj acc str-len)
                 acc))) () strings))
 
-
+#_(defn (Often) If what you are feeding ‘reduce’ is not the form you want to end with, you probably need to seed it with a value. For example, if you’re giving reduce a string, but you want your result to be a number, give it the value of 0. - Robert)
